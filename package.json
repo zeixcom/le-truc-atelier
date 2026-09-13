@@ -9,7 +9,7 @@
 		"typecheck": "tsc --noEmit",
 		"lint": "biome check --write ."
 	},
-	"license": "ISC",
+	"license": "MIT",
 	"dependencies": {
 		"@zeix/le-truc": "^2.6.0"
 	},
