@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'bun:test'
+
 import './demo-greeter'
 
 describe('demo-greeter', () => {
@@ -11,8 +13,9 @@ describe('demo-greeter', () => {
 				<p>Hello, <output for="name">World</output>!</p>
 			</demo-greeter>
 		`
-		const input = document.querySelector<HTMLInputElement>('demo-greeter input')!
-		const output = document.querySelector('demo-greeter output')!
+		const input = document.querySelector<HTMLInputElement>('demo-greeter input')
+		const output = document.querySelector('demo-greeter output')
+		if (!input || !output) throw new Error('demo-greeter markup not found')
 
 		expect(output.textContent).toBe('World')
 

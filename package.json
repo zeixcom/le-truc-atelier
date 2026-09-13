@@ -1,22 +1,23 @@
 {
-  "name": "le-truc-atelier",
-  "version": "0.1.0",
-  "description": "Le Truc Atelier – a direct manipulation editor for Le Truc components, built with Le Truc components.",
-  "type": "module",
-  "scripts": {
-    "dev": "bun --watch server/dev.ts",
-    "test": "bun test",
-    "typecheck": "tsc --noEmit",
-    "lint": "biome check --write ."
-  },
-  "license": "ISC",
-  "dependencies": {
-    "@zeix/le-truc": "^2.6.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.5.13",
-    "@types/bun": "^1.4.2",
-    "jsdom": "^30.0.1",
-    "typescript": "^7.0.2"
-  }
+	"name": "le-truc-atelier",
+	"version": "0.1.0",
+	"description": "Le Truc Atelier – a direct manipulation editor for Le Truc components, built with Le Truc components.",
+	"type": "module",
+	"scripts": {
+		"dev": "bun --watch server/dev.ts",
+		"test": "bun test",
+		"typecheck": "tsc --noEmit",
+		"lint": "biome check --write ."
+	},
+	"license": "ISC",
+	"dependencies": {
+		"@zeix/le-truc": "^2.6.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.13",
+		"@types/bun": "^1.4.2",
+		"@types/jsdom": "^30.0.0",
+		"jsdom": "^30.0.1",
+		"typescript": "^7.0.2"
+	}
 }

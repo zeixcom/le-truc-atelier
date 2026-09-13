@@ -5,8 +5,24 @@ const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>', {
 	pretendToBeVisual: true,
 })
 
+// Timers, console, performance and fetch must stay Bun's own: jsdom's
+// versions self-reference when placed on the host global and recurse.
+const keepBun = new Set([
+	'globalThis',
+	'console',
+	'fetch',
+	'performance',
+	'setTimeout',
+	'clearTimeout',
+	'setInterval',
+	'clearInterval',
+	'queueMicrotask',
+	'requestAnimationFrame',
+	'cancelAnimationFrame',
+])
+
 for (const key of Object.getOwnPropertyNames(dom.window)) {
-	if (key === 'globalThis') continue
+	if (keepBun.has(key)) continue
 	const existing = Object.getOwnPropertyDescriptor(globalThis, key)
 	if (existing && !existing.configurable) continue
 	Object.defineProperty(globalThis, key, {
