@@ -1,0 +1,13 @@
+{
+  "name": "le-truc-atelier",
+  "version": "0.1.0",
+  "description": "Le Truc Atelier – a direct manipulation editor for Le Truc components, built with Le Truc components.",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@zeix/le-truc": "^2.6.0"
+  }
+}
