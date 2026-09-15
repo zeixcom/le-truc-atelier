@@ -1,10 +1,167 @@
+/* Adopted le-truc component styles */
+@import "../components/card/callout/card-callout.css";
+@import "../components/form/listbox/form-listbox.css";
+@import "../components/module/lazyload/module-lazyload.css";
+@import "../components/module/scrollarea/module-scrollarea.css";
+@import "../components/module/splitview/module-splitview.css";
+
+/* Design tokens, mirrored from le-truc examples/_global.css (used subset) */
 :root {
 	color-scheme: light dark;
-	font-family: system-ui, sans-serif;
+
+	--space-xxs: 0.2361rem;
+	--space-xs: 0.382rem;
+	--space-s: 0.618rem;
+	--space-m: 1rem;
+	--space-l: 1.618rem;
+	--space-xl: 2.6179rem;
+
+	--font-size-xs: clamp(0.75rem, 0.125vw + 0.725rem, 0.7813rem);
+	--font-size-s: clamp(0.875rem, 0.25vw + 0.825rem, 0.9375rem);
+	--font-size-m: clamp(1rem, 0.5vw + 0.9rem, 1.125rem);
+
+	--line-height-xs: 1;
+	--line-height-s: 1.2;
+	--line-height-l: 1.618;
+
+	--color-white: white;
+	--color-black: black;
+
+	--color-neutral-10: #ecebef;
+	--color-neutral-20: #d8d6dd;
+	--color-neutral-30: #c4c1ca;
+	--color-neutral-50: #97939f;
+	--color-neutral-70: #636169;
+	--color-neutral-80: #46444a;
+	--color-neutral-90: #242326;
+
+	--color-blue-20: #badef7;
+	--color-blue-30: #8eccf6;
+	--color-blue-50: #36a2de;
+	--color-blue-70: #2a6a90;
+	--color-blue-80: #2a4a5e;
+
+	--color-green-20: #cfdfa8;
+	--color-green-50: #86a12e;
+	--color-green-80: #3f4a21;
+
+	--color-orange-20: #fccba6;
+	--color-orange-50: #d37a30;
+	--color-orange-80: #5d3b21;
+
+	--color-pink-20: #fec5da;
+	--color-pink-50: #db689b;
+	--color-pink-80: #603647;
+
+	--color-selection: var(--color-blue-50);
+	--color-selection-selected: light-dark(
+		var(--color-blue-70),
+		var(--color-blue-30)
+	);
+	--color-selection-active: light-dark(
+		var(--color-blue-80),
+		var(--color-blue-20)
+	);
+	--color-selection-hover: light-dark(
+		var(--color-blue-20),
+		var(--color-blue-80)
+	);
+
+	--color-input: light-dark(var(--color-white), var(--color-black));
+	--color-background: light-dark(
+		var(--color-neutral-10),
+		var(--color-neutral-90)
+	);
+	--color-border: var(--color-neutral-50);
+	--color-border-soft: light-dark(
+		var(--color-neutral-30),
+		var(--color-neutral-70)
+	);
+	--color-text: light-dark(var(--color-neutral-90), var(--color-neutral-10));
+	--color-text-soft: light-dark(
+		var(--color-neutral-80),
+		var(--color-neutral-20)
+	);
+	--color-text-inverted: light-dark(var(--color-white), var(--color-black));
+	--color-shadow: light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4));
+
+	--font-weight-bold: 700;
+
+	--opacity-translucent: 0.4;
+	--opacity-dimmed: 0.8;
+
+	--transition-short: 0.2s;
+
+	--easing-inout: ease-in-out;
+
+	--input-height: 2rem;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/* Mirrors le-truc examples/_global.css — component CSS sets display: block,
+	which would otherwise override the hidden attribute's UA style */
+[hidden] {
+	/* biome-ignore lint/complexity/noImportantStyles: upstream global reset */
+	display: none !important;
 }
 
 body {
-	margin: 2rem auto;
-	max-width: 40rem;
-	padding: 0 1rem;
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	color: var(--color-text);
+	background: var(--color-background);
+	font-family: system-ui, sans-serif;
+}
+
+header {
+	padding: var(--space-xs) var(--space-m);
+	border-block-end: 1px solid var(--color-border-soft);
+
+	& h1 {
+		margin: 0;
+		font-size: var(--font-size-m);
+	}
+}
+
+/* module-listnav coordinates the whole workspace; the splitview inside it
+	owns the actual layout */
+module-listnav {
+	display: contents;
+}
+
+#workspace {
+	flex: 1;
+	min-height: 0;
+}
+
+/* Panes */
+nav,
+module-component-editor,
+module-properties-editor {
+	padding: var(--space-m);
+}
+
+nav {
+	& h2 {
+		margin: 0 0 var(--space-s);
+		font-size: var(--font-size-s);
+	}
+}
+
+module-component-editor,
+module-properties-editor {
+	& h2 {
+		margin: 0 0 var(--space-s);
+		font-size: var(--font-size-m);
+	}
+
+	& h3 {
+		margin: var(--space-m) 0 var(--space-xs);
+		font-size: var(--font-size-s);
+	}
 }
